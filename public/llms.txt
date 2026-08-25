@@ -1,0 +1,13 @@
+# Counter-Strike: The Long Game
+
+An independent, interactive editorial history of Counter-Strike from the 1999 Half-Life mod through Counter-Strike 2.
+
+## Main sections
+
+- Origin file: the 1999 public beta
+- Version history: retail 1.0, 1.6, Condition Zero, Source, Global Offensive, and Counter-Strike 2
+- The living game: major updates and competitive milestones
+- Map DNA: the evolution of Dust II
+- Source 2: the 2023 transition
+
+This project is not affiliated with or endorsed by Valve Corporation.
