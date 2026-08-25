@@ -85,7 +85,7 @@ const mapData: Record<MapEra, MapRecord> = {
     date: '2001 / DE_DUST2',
     title: 'The routes were already there.',
     copy: 'David Johnston’s original Dust II establishes the enduring two-site layout: Long and Short converge on A, tunnels feed B, and Mid connects every rotation.',
-    image: '/assets/dust2-2001.png',
+    image: './assets/dust2-2001.png',
     imageAlt: 'Original Counter-Strike Dust II overhead radar from 2001',
     width: 1024,
     height: 768,
@@ -96,7 +96,7 @@ const mapData: Record<MapEra, MapRecord> = {
     date: '2017 / CS:GO REMAKE',
     title: 'New landmarks. Familiar rotations.',
     copy: 'The 2017 remake rebuilds the surface detail, cover, and visual landmarks while preserving the recognizable route structure and round rhythm.',
-    image: '/assets/dust2-2017.png',
+    image: './assets/dust2-2017.png',
     imageAlt: 'Counter-Strike Global Offensive Dust II spectator radar after the 2017 remake',
     width: 1024,
     height: 1024,
@@ -107,7 +107,7 @@ const mapData: Record<MapEra, MapRecord> = {
     date: '2023–2026 / SOURCE 2',
     title: 'A touchstone map.',
     copy: 'In Counter-Strike 2, Dust II receives brighter lighting and modern materials with minimal gameplay changes—the same routes remain readable in a newer engine.',
-    image: '/assets/dust2-radar.png',
+    image: './assets/dust2-radar.png',
     imageAlt: 'Current Counter-Strike 2 Dust II in-game radar',
     width: 1024,
     height: 1024,
@@ -185,7 +185,7 @@ function OriginFile() {
             <span>PUBLIC DOMAIN</span>
           </div>
           <img
-            src="/assets/hlds-origin.png"
+            src="./assets/hlds-origin.png"
             alt="A Half-Life Dedicated Server terminal running the Counter-Strike mod"
             width="1120"
             height="772"
@@ -251,7 +251,7 @@ function GlobalOffensive() {
       </div>
       <figure className="trophy-evidence reveal">
         <img
-          src="/assets/major-trophy.jpg"
+          src="./assets/major-trophy.jpg"
           alt="The trophy for the 2016 MLG Columbus CS:GO Major"
           width="1280"
           height="853"
@@ -296,7 +296,7 @@ function LivingGame() {
       </div>
       <figure className="arena-evidence reveal">
         <img
-          src="/assets/iem-katowice.jpg"
+          src="./assets/iem-katowice.jpg"
           alt="The packed arena at the IEM Katowice Major in 2019"
           width="1280"
           height="853"
@@ -381,7 +381,7 @@ function SourceTwo() {
     <section className="source-two chapter" id="source-2" aria-labelledby="source-title">
       <figure className="source-image">
         <img
-          src="/assets/cs2-inferno.jpg"
+          src="./assets/cs2-inferno.jpg"
           alt="A firefight on Inferno in Counter-Strike 2"
           width="1920"
           height="1080"

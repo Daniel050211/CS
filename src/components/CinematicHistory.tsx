@@ -46,7 +46,7 @@ const storyScenes = [
     title: 'The server becomes a stadium.',
     copy: 'DreamHack Winter begins a decade of Valve-backed Majors, packed arenas, and impossible final rounds.',
     note: 'MAJOR 01 / 19',
-    image: '/assets/major-trophy.jpg',
+    image: './assets/major-trophy.jpg',
     imageAlt: 'The trophy for the 2016 MLG Columbus CS:GO Major',
   },
   {
@@ -62,7 +62,7 @@ const storyScenes = [
     title: 'A new engine. An old heartbeat.',
     copy: 'Responsive smoke, new light, and sub-tick architecture replace CS:GO without replacing its central question.',
     note: 'SEPTEMBER 27 / 2023',
-    image: '/assets/cs2-inferno.jpg',
+    image: './assets/cs2-inferno.jpg',
     imageAlt: 'A firefight on Inferno in Counter-Strike 2',
   },
   {
