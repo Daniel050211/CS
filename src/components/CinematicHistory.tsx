@@ -74,6 +74,8 @@ const storyScenes = [
   },
 ]
 
+const finalSceneHold = 0.8
+
 const terrainVertexShader = `
   uniform float uTime;
   uniform float uProgress;
@@ -591,13 +593,18 @@ export default function CinematicHistory() {
       }
     })
 
-    timeline.to(scenes.at(-1)!, { autoAlpha: 1, scale: 1, duration: 0.8 }, storyScenes.length)
+    const finalScene = scenes.at(-1)!
+    timeline
+      .set(finalScene, { autoAlpha: 1, scale: 1, yPercent: 0 }, storyScenes.length)
+      .to({}, { duration: finalSceneHold })
 
     const trigger = ScrollTrigger.create({
       trigger: element,
       start: 'top top',
       end: 'bottom bottom',
-      scrub: 0.55,
+      // Lenis already smooths the scroll position. A second interpolated scrub
+      // lets the scene timeline trail the sticky runway's physical endpoint.
+      scrub: true,
       animation: timeline,
       invalidateOnRefresh: true,
       onUpdate: (self) => {
