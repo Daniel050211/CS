@@ -328,6 +328,17 @@
     color: var(--orange);
   }
 
+  @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+    .story-scene:not(.story-scene-0) .story-marker {
+      position: absolute;
+      top: clamp(7.5rem, 14vh, 9.5rem);
+      left: var(--gutter);
+      max-width: 18rem;
+      margin: 0;
+      text-align: left;
+    }
+  }
+
   .story-title {
     position: relative;
     z-index: 3;

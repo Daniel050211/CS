@@ -74,6 +74,9 @@ const storyScenes = [
   },
 ]
 
+const storyDuration = storyScenes.length - 1
+const sceneEnterDuration = 0.74
+const sceneExitDuration = 0.62
 const finalSceneHold = 0.8
 
 const terrainVertexShader = `
@@ -572,14 +575,18 @@ export default function CinematicHistory() {
     scenes.forEach((scene, index) => {
       if (index === 0) return
       const previous = scenes[index - 1]
-      const at = index
+      const stopAt = index
       timeline
-        .to(previous, { autoAlpha: 0, scale: 0.68, yPercent: -8, duration: 0.62, ease: 'power2.in' }, at)
+        .to(
+          previous,
+          { autoAlpha: 0, scale: 0.68, yPercent: -8, duration: sceneExitDuration, ease: 'power2.in' },
+          stopAt - sceneExitDuration,
+        )
         .fromTo(
           scene,
           { autoAlpha: 0, scale: 1.32, yPercent: 10 },
-          { autoAlpha: 1, scale: 1, yPercent: 0, duration: 0.74, ease: 'power3.out' },
-          at + 0.18,
+          { autoAlpha: 1, scale: 1, yPercent: 0, duration: sceneEnterDuration, ease: 'power3.out' },
+          stopAt - sceneEnterDuration,
         )
 
       const media = scene.querySelector('.story-media')
@@ -587,16 +594,13 @@ export default function CinematicHistory() {
         timeline.fromTo(
           media,
           { opacity: 0, scale: 1.3, clipPath: 'inset(18%)' },
-          { opacity: 0.72, scale: 1, clipPath: 'inset(0%)', duration: 0.9, ease: 'power2.out' },
-          at + 0.08,
+          { opacity: 0.72, scale: 1, clipPath: 'inset(0%)', duration: sceneEnterDuration, ease: 'power2.out' },
+          stopAt - sceneEnterDuration,
         )
       }
     })
 
-    const finalScene = scenes.at(-1)!
-    timeline
-      .set(finalScene, { autoAlpha: 1, scale: 1, yPercent: 0 }, storyScenes.length)
-      .to({}, { duration: finalSceneHold })
+    timeline.to({}, { duration: finalSceneHold }, storyDuration)
 
     const trigger = ScrollTrigger.create({
       trigger: element,
@@ -608,13 +612,18 @@ export default function CinematicHistory() {
       animation: timeline,
       invalidateOnRefresh: true,
       onUpdate: (self) => {
-        progressRef.current = self.progress
-        setStageGlow(self.progress)
-        if (progressFill) gsap.set(progressFill, { scaleX: self.progress })
+        const sceneProgress = gsap.utils.clamp(
+          0,
+          1,
+          (self.progress * (storyDuration + finalSceneHold)) / storyDuration,
+        )
+        progressRef.current = sceneProgress
+        setStageGlow(sceneProgress)
+        if (progressFill) gsap.set(progressFill, { scaleX: sceneProgress })
         if (prompt) {
-          prompt.textContent = self.progress < 0.08
+          prompt.textContent = sceneProgress < 0.08
             ? 'SCROLL TO DEPLOY'
-            : self.progress > 0.9
+            : sceneProgress > 0.9
               ? 'ALMOST THROUGH'
               : 'KEEP MOVING'
         }
